@@ -26,4 +26,14 @@ class Crypt
     keys << (number[3] + number[4]).to_i
     keys
   end
+
+  def shift(offsets, keys)
+    shift = []
+    count = 0
+    offsets.each do |offset|
+      shift << offset += keys[count]
+      count += 1
+    end
+    shift
+  end
 end

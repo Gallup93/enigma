@@ -26,8 +26,14 @@ class CryptTest < Minitest::Test
     assert_equal [7,2,4,9], @crypt.generate_offsets(date_as_int)
   end
 
-  def test_generates_key
+  def test_generates_keys
     key = @crypt.generate_keys
     assert_equal true, key.length == 4
+  end
+
+  def test_shift
+    offsets = [7,2,4,9]
+    keys = [12, 23, 35, 54]
+    assert_equal [19, 25, 39, 63], @crypt.shift(offsets, keys)
   end
 end
