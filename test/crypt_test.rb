@@ -20,4 +20,14 @@ class CryptTest < Minitest::Test
     date = @crypt.current_date_as_int
     assert_equal true, date.to_s.length == 5 || date.to_s.length == 6
   end
+
+  def test_generates_offsets
+    date_as_int = 50193
+    assert_equal [7,2,4,9], @crypt.generate_offsets(date_as_int)
+  end
+
+  def test_generates_key
+    key = @crypt.generate_keys
+    assert_equal true, key.length == 4
+  end
 end

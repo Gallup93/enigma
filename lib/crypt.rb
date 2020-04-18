@@ -10,4 +10,20 @@ class Crypt
     time = Time.new
     time.strftime("%d/%m/%y").gsub(/[^0-9,.]/, "").to_i
   end
+
+  def generate_offsets(date_as_int)
+    squared = date_as_int * date_as_int
+    squared.digits.first(4).reverse.compact
+  end
+
+  def generate_keys
+    keys = []
+    number = rand.to_s
+    number = number[2..6]
+    keys << (number[0] + number[1]).to_i
+    keys << (number[1] + number[2]).to_i
+    keys << (number[2] + number[3]).to_i
+    keys << (number[3] + number[4]).to_i
+    keys
+  end
 end
