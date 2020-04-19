@@ -16,18 +16,10 @@ class CryptTest < Minitest::Test
     assert_equal base_characters, @crypt.base_characters
   end
 
-  def test_current_date_as_int
-    date = @crypt.current_date_as_int
-    assert_equal true, date.length == 5 || date.length == 6
-  end
-
-  # def test_date_to_int
-  #   assert_equal "101906", @crypt.test_date_to_int("10/19/06")
-  # end
-
   def test_generates_offsets
-    date_as_int = "50193"
-    assert_equal [7,2,4,9], @crypt.generate_offsets(date_as_int)
+    date = "50193"
+    assert_equal [7,2,4,9], @crypt.generate_offsets(date)
+    assert_equal true, @crypt.generate_offsets.length == 4
   end
 
   def test_generates_keys
