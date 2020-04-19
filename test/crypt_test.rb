@@ -54,7 +54,7 @@ class CryptTest < Minitest::Test
   end
 
   def test_encrypt
-    #test default values
+    #test default values(stubs)
     expected = {encryption: "keder ohulw", key: "02715", date: "040895"}
     assert_equal expected, @crypt.encrypt("hello world", "02715", "040895")
   end
