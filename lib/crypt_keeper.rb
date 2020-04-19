@@ -107,7 +107,7 @@ class CryptKeeper
       else
         encrypted[count] = shift4[encrypted[count]]
         count +=1
-        shift_num = :one
+        shift_num = :one 
       end
     end
     text = ""

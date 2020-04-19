@@ -24,8 +24,6 @@ class CryptKeeperTest < Minitest::Test
   end
 
   def test_generates_keys
-    # key = @encrypt.generate_keys
-    # assert_equal true, key.length == 4 && key.all?{|key| key != nil?}
     key = @crypt.generate_keys("34987")
     assert_equal [34,49,98,87], key
   end
@@ -53,7 +51,6 @@ class CryptKeeperTest < Minitest::Test
   end
 
   def test_encryption
-    #test default values(stubs)
     expected = {encryption: "keder ohulw", key: "02715", date: "040895"}
     assert_equal expected, @crypt.encryption("hello world", "02715", "040895")
   end
