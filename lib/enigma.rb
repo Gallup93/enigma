@@ -1,3 +1,4 @@
+require './lib/crypt_keeper'
 class Enigma
   attr_reader :crypt
 
