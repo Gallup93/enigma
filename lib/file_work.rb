@@ -6,4 +6,10 @@ class FileWork
     text = text.gsub(/[^0-9a-z ]/i, '')
     text = text.downcase
   end
+
+  def write_text(file_path, text)
+    new_file = File.open(file_path, "w")
+    new_file.write(text)
+    new_file.close
+  end
 end
