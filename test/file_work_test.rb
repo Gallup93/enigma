@@ -10,7 +10,7 @@ class FileWorkTest < Minitest::Test
   end
 
   def test_get_text
-    expected = "this is only a test. remain calm! if you panic, you will die. this is for your own safety! this is a test."
+    expected = "this is only a test remain calm if you panic you will die this is for your own safety this is a test"
     assert_equal expected, @file_work.get_text('./files/uncrypted_test.txt')
   end
 end
