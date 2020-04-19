@@ -49,26 +49,26 @@ class Crypt
 
   def shift_text(text, shift1, shift2, shift3, shift4)
     count = 0
-    type = :one
+    shift_num = :one
     encrypted = text.chars
 
     while count < text.length do
-      if type == :one
+      if shift_num == :one
         encrypted[count] = shift1[encrypted[count]]
         count +=1
-        type = :two
-      elsif type == :two
+        shift_num = :two
+      elsif shift_num == :two
         encrypted[count] = shift2[encrypted[count]]
         count +=1
-        type = :three
-      elsif type == :three
+        shift_num = :three
+      elsif shift_num == :three
         encrypted[count] = shift3[encrypted[count]]
         count +=1
-        type = :four
+        shift_num = :four
       else
         encrypted[count] = shift4[encrypted[count]]
         count +=1
-        type = :one
+        shift_num = :one
       end
     end
     text = ""
@@ -88,15 +88,15 @@ class Crypt
       key = key[2..6]
     end
     result = {encryption: text, key: key, date: date}
-    keys = generate_keys(key)
-    offsets = generate_offsets(date)
-    shift_nums = generate_shift_nums(offsets, keys)
-    shift1 = generate_shifted_alphabet(shift_nums[0])
-    shift2 = generate_shifted_alphabet(shift_nums[1])
-    shift3 = generate_shifted_alphabet(shift_nums[2])
-    shift4 = generate_shifted_alphabet(shift_nums[3])
-    result[:encryption] = shift_text(text, shift1, shift2, shift3, shift4)
-    result
+      keys = generate_keys(key)
+      offsets = generate_offsets(date)
+      shift_nums = generate_shift_nums(offsets, keys)
+      shift1 = generate_shifted_alphabet(shift_nums[0])
+      shift2 = generate_shifted_alphabet(shift_nums[1])
+      shift3 = generate_shifted_alphabet(shift_nums[2])
+      shift4 = generate_shifted_alphabet(shift_nums[3])
+      result[:encryption] = shift_text(text, shift1, shift2, shift3, shift4)
+      result
 
   end#encrypt
 end
