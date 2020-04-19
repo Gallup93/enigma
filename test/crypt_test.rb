@@ -56,12 +56,12 @@ class CryptTest < Minitest::Test
     shift2 = @crypt.generate_shifted_alphabet(3)
     shift3 = @crypt.generate_shifted_alphabet(16)
     shift4 = @crypt.generate_shifted_alphabet(6)
-    assert_equal ["l", "h", "a", "r", "s"], @crypt.shift_text("hello", shift1, shift2, shift3, shift4)
+    assert_equal "lhars", @crypt.shift_text("hello", shift1, shift2, shift3, shift4)
   end
 
-  # def test_encrypt
-  #   #test default values
-  #   expected = {encryption: "keder ohulw", key: "02715", date: "040895"}
-  #   assert_equal expected, @crypt.encrypt("hello world", "02715", "040895")
-  # end
+  def test_encrypt
+    #test default values
+    expected = {encryption: "keder ohulw", key: "02715", date: "040895"}
+    assert_equal expected, @crypt.encrypt("hello world", "02715", "040895")
+  end
 end

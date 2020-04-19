@@ -80,21 +80,25 @@ class Crypt
         type = :one
       end
     end
-    encrypted
+    text = ""
+    encrypted.each do |letter|
+      text += letter
+    end
+    text
   end
 
-  # def encrypt(text, key=nil, date=nil)
-  #   result = {encryption: text, key: key, date: date}
-  #   if key != nil && date != nil
-  #     keys = key
-  #     offsets = generate_offsets(date)
-  #     shift_nums = generate_shift_nums(offsets, keys)
-  #     shift1 = generate_shifted_alphabet(shift_nums[0])
-  #     shift2 = generate_shifted_alphabet(shift_nums[1])
-  #     shift3 = generate_shifted_alphabet(shift_nums[2])
-  #     shift4 = generate_shifted_alphabet(shift_nums[3])
-  #     text = shift_text(text, shift1, shift2, shift3, shift4)
-  #     result
-  #   end#if
-  # end#encrypt
+  def encrypt(text, key=nil, date=nil)
+    result = {encryption: text, key: key, date: date}
+    if key != nil && date != nil
+      keys = generate_keys(key)
+      offsets = generate_offsets(date)
+      shift_nums = generate_shift_nums(offsets, keys)
+      shift1 = generate_shifted_alphabet(shift_nums[0])
+      shift2 = generate_shifted_alphabet(shift_nums[1])
+      shift3 = generate_shifted_alphabet(shift_nums[2])
+      shift4 = generate_shifted_alphabet(shift_nums[3])
+      result[:encryption] = shift_text(text, shift1, shift2, shift3, shift4)
+      result
+    end#if
+  end#encrypt
 end
