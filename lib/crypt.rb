@@ -53,4 +53,31 @@ class Crypt
     end
     result
   end
+
+  def shift_text(text, shift1, shift2, shift3, shift4)
+    count = 0
+    type = :one
+    encrypted = text.chars
+
+    while count < text.length do
+      if type == :one
+        encrypted[count] = shift1[encrypted[count]]
+        count +=1
+        type = :two
+      elsif type == :two
+        encrypted[count] = shift2[encrypted[count]]
+        count +=1
+        type = :three
+      elsif type == :three
+        encrypted[count] = shift3[encrypted[count]]
+        count +=1
+        type = :four
+      else
+        encrypted[count] = shift4[encrypted[count]]
+        count +=1
+        type = :one
+      end
+    end
+    encrypted
+  end
 end

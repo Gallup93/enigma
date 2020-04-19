@@ -44,4 +44,12 @@ class CryptTest < Minitest::Test
       "u"=>"y", "v"=>"z", "w"=>" ", "x"=>"a", "y"=>"b", "z"=>"c", " "=>"d"}
     assert_equal shifted ,@crypt.generate_shifted_alphabet(4)
   end
+
+  def test_shift_text
+    shift1 = @crypt.generate_shifted_alphabet(4)
+    shift2 = @crypt.generate_shifted_alphabet(3)
+    shift3 = @crypt.generate_shifted_alphabet(16)
+    shift4 = @crypt.generate_shifted_alphabet(6)
+    assert_equal ["l", "h", "a", "r", "s"], @crypt.shift_text("hello", shift1, shift2, shift3, shift4)
+  end
 end
