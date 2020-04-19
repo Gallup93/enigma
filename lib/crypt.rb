@@ -6,20 +6,12 @@ class Crypt
                         "s", "t", "u", "v", "w", "x", "y", "z", " "]
   end
 
-  def generate_offsets(date=nil)
-    if date == nil
-      time = Time.new
-      date = time.strftime("%d/%m/%y").gsub(/[^0-9,.]/, "")
-    end
+  def generate_offsets(date)
     squared = (date.to_i * date.to_i)
     squared.digits.first(4).reverse.compact
   end
 
-  def generate_keys(key=nil)
-    if key == nil
-      key = rand.to_s
-      key = key[2..6]
-    end
+  def generate_keys(key)
     keys = []
     keys << (key[0] + key[1]).to_i
     keys << (key[1] + key[2]).to_i
@@ -87,8 +79,15 @@ class Crypt
   end
 
   def encrypt(text, key=nil, date=nil)
+    if date == nil
+      time = Time.new
+      date = time.strftime("%d/%m/%y").gsub(/[^0-9,.]/, "")
+    end
+    if key == nil
+      key = rand.to_s
+      key = key[2..6]
+    end
     result = {encryption: text, key: key, date: date}
-    if key != nil && date != nil
       keys = generate_keys(key)
       offsets = generate_offsets(date)
       shift_nums = generate_shift_nums(offsets, keys)
@@ -98,6 +97,6 @@ class Crypt
       shift4 = generate_shifted_alphabet(shift_nums[3])
       result[:encryption] = shift_text(text, shift1, shift2, shift3, shift4)
       result
-    end#if
+
   end#encrypt
 end

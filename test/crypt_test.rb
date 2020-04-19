@@ -1,6 +1,9 @@
+require 'simplecov'
+SimpleCov.start
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/crypt.rb'
+require 'mocha/minitest'
 
 class CryptTest < Minitest::Test
   def setup
@@ -19,14 +22,13 @@ class CryptTest < Minitest::Test
   def test_generates_offsets
     date = "50193"
     assert_equal [7,2,4,9], @crypt.generate_offsets(date)
-    assert_equal true, @crypt.generate_offsets.length == 4
   end
 
   def test_generates_keys
-    key = @crypt.generate_keys
-    assert_equal true, key.length == 4 && key.all?{|key| key != nil?}
-    key2 = @crypt.generate_keys("34987")
-    assert_equal [34,49,98,87], key2
+    # key = @crypt.generate_keys
+    # assert_equal true, key.length == 4 && key.all?{|key| key != nil?}
+    key = @crypt.generate_keys("34987")
+    assert_equal [34,49,98,87], key
   end
 
   def test_generate_shift_nums
