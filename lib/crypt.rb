@@ -36,4 +36,21 @@ class Crypt
     end
     shift
   end
+
+  def create_shifted_alphabet(shift_num)
+    result = {"a" => nil, "b" => nil, "c" => nil, "d" => nil, "e" => nil,
+    "f" => nil, "g" => nil, "h" => nil, "i" => nil, "j" => nil, "k" => nil,
+    "l" => nil, "m" => nil, "n" => nil, "o" => nil, "p" => nil, "q" => nil,
+    "r" => nil, "s" => nil, "t" => nil, "u" => nil, "v" => nil, "w" => nil,
+    "x" => nil, "y" => nil, "z" => nil, " " => nil}
+
+    shifted = @base_characters.rotate(shift_num)
+    count = 0
+
+    @base_characters.each do |char|
+      result[char] = shifted[count]
+      count += 1
+    end
+    result
+  end
 end
