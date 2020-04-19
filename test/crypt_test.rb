@@ -18,17 +18,23 @@ class CryptTest < Minitest::Test
 
   def test_current_date_as_int
     date = @crypt.current_date_as_int
-    assert_equal true, date.to_s.length == 5 || date.to_s.length == 6
+    assert_equal true, date.length == 5 || date.length == 6
   end
 
+  # def test_date_to_int
+  #   assert_equal "101906", @crypt.test_date_to_int("10/19/06")
+  # end
+
   def test_generates_offsets
-    date_as_int = 50193
+    date_as_int = "50193"
     assert_equal [7,2,4,9], @crypt.generate_offsets(date_as_int)
   end
 
   def test_generates_keys
     key = @crypt.generate_keys
-    assert_equal true, key.length == 4
+    assert_equal true, key.length == 4 && key.all?{|key| key != nil?}
+    key2 = @crypt.generate_keys("34987")
+    assert_equal [34,49,98,87], key2
   end
 
   def test_generate_shift_nums
@@ -52,4 +58,10 @@ class CryptTest < Minitest::Test
     shift4 = @crypt.generate_shifted_alphabet(6)
     assert_equal ["l", "h", "a", "r", "s"], @crypt.shift_text("hello", shift1, shift2, shift3, shift4)
   end
+
+  # def test_encrypt
+  #   #test default values
+  #   expected = {encryption: "keder ohulw", key: "02715", date: "040895"}
+  #   assert_equal expected, @crypt.encrypt("hello world", "02715", "040895")
+  # end
 end
