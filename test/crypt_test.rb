@@ -53,9 +53,9 @@ class EncryptTest < Minitest::Test
     assert_equal "lhars", @encrypt.shift_text("hello", shift1, shift2, shift3, shift4)
   end
 
-  def test_encrypt
+  def test_encryption
     #test default values(stubs)
     expected = {encryption: "keder ohulw", key: "02715", date: "040895"}
-    assert_equal expected, @encrypt.encrypt("hello world", "02715", "040895")
+    assert_equal expected, @encrypt.encryption("hello world", "02715", "040895")
   end
 end
