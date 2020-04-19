@@ -1,4 +1,7 @@
-class Crypt
+require './lib/crypt_keeper'
+
+class Encrypt
+  include CryptKeeper
   attr_reader :base_characters
   def initialize
     @base_characters = ["a", "b", "c", "d", "e", "f", "g", "h", "i",
