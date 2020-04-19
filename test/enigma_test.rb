@@ -3,7 +3,7 @@ SimpleCov.start
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/enigma.rb'
-require './lib/encrypt'
+require './lib/crypt_keeper'
 
 class EnigmaTest < Minitest::Test
   def setup
@@ -12,7 +12,7 @@ class EnigmaTest < Minitest::Test
 
   def test_initialization_with_attributes
     assert_instance_of Enigma, @enigma
-    assert_instance_of Encrypt, @enigma.crypt1
+    assert_instance_of CryptKeeper, @enigma.crypt
   end
 
   def test_encrypt
