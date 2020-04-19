@@ -27,7 +27,7 @@ class Crypt
     keys
   end
 
-  def shift(offsets, keys)
+  def generate_shift_nums(offsets, keys)
     shift = []
     count = 0
     offsets.each do |offset|
@@ -37,7 +37,7 @@ class Crypt
     shift
   end
 
-  def create_shifted_alphabet(shift_num)
+  def generate_shifted_alphabet(shift_num)
     result = {"a" => nil, "b" => nil, "c" => nil, "d" => nil, "e" => nil,
     "f" => nil, "g" => nil, "h" => nil, "i" => nil, "j" => nil, "k" => nil,
     "l" => nil, "m" => nil, "n" => nil, "o" => nil, "p" => nil, "q" => nil,

@@ -31,17 +31,17 @@ class CryptTest < Minitest::Test
     assert_equal true, key.length == 4
   end
 
-  def test_shift
+  def test_generate_shift_nums
     offsets = [7,2,4,9]
     keys = [12, 23, 35, 54]
-    assert_equal [19, 25, 39, 63], @crypt.shift(offsets, keys)
+    assert_equal [19, 25, 39, 63], @crypt.generate_shift_nums(offsets, keys)
   end
 
-  def test_create_shifted_alphabet
+  def test_generate_shifted_alphabet
     shifted = {"a"=>"e", "b"=>"f", "c"=>"g", "d"=>"h", "e"=>"i", "f"=>"j",
       "g"=>"k", "h"=>"l", "i"=>"m", "j"=>"n", "k"=>"o", "l"=>"p", "m"=>"q",
       "n"=>"r", "o"=>"s", "p"=>"t", "q"=>"u", "r"=>"v", "s"=>"w", "t"=>"x",
       "u"=>"y", "v"=>"z", "w"=>" ", "x"=>"a", "y"=>"b", "z"=>"c", " "=>"d"}
-    assert_equal shifted ,@crypt.create_shifted_alphabet(4)
+    assert_equal shifted ,@crypt.generate_shifted_alphabet(4)
   end
 end
