@@ -15,4 +15,9 @@ class FileWorkTest < Minitest::Test
     @file_work.write_text('./files/write_to_test.txt', text)
     assert_equal text, @file_work.get_text('./files/write_to_test.txt')
   end
+
+  def test_create_file_path
+    big_boom = "nuclear_launch_codes"
+    assert_equal "./files/nuclear_launch_codes", @file_work.create_file_path(big_boom)
+  end
 end

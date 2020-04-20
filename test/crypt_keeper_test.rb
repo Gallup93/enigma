@@ -21,13 +21,18 @@ class CryptKeeperTest < Minitest::Test
 
   def test_generates_keys
     key = @crypt.generate_keys("34987")
+    key2 = @crypt.generate_keys("04900")
     assert_equal [34,49,98,87], key
+    assert_equal [4,49,90,0], key2
   end
 
   def test_generate_shift_nums
     offsets = [7,2,4,9]
     keys = [12, 23, 35, 54]
+    offsets2 = [7,0,4,0]
+    keys2 = [12, 23, 35, 0]
     assert_equal [19, 25, 39, 63], @crypt.generate_shift_nums(offsets, keys)
+    assert_equal [19, 23, 39, 0], @crypt.generate_shift_nums(offsets2, keys2)
   end
 
   def test_generate_shifted_alphabet

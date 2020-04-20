@@ -12,4 +12,8 @@ class FileWork
     new_file.write(text)
     new_file.close
   end
+
+  def create_file_path(file_name)
+    './files/' + file_name
+  end
 end

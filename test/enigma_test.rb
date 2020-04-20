@@ -21,8 +21,9 @@ class EnigmaTest < Minitest::Test
   end
 
   def test_crypts_use_default_values
-    expcted1 = {:encryption=>"qddtmhqphfvtz", :key=>"02715", :date=>"190420"}
-    expected2 = {:decryption=>"i need a beer", :key=>"02715", :date=>"190420"}
+    #need to stub date
+    expcted1 = {:encryption=>"qddtmhqphfvtz", :key=>"02715", :date=>"200420"}
+    expected2 = {:decryption=>"i need a beer", :key=>"02715", :date=>"200420"}
     encrypted = @enigma.encrypt("i need a beer", "02715")
     decrypted = @enigma.decrypt(encrypted[:encryption], "02715")
     assert_equal expcted1, encrypted
