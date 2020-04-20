@@ -88,26 +88,30 @@ class CryptKeeper
 
   def shift_text(text, shift1, shift2, shift3, shift4)
     count = 0
-    shift_num = :one
-    encrypted = text.chars
-
+    shift_num = [:one, :two, :three, :four]
+    encrypted = text.downcase.chars
     while count < text.length do
-      if shift_num == :one
-        encrypted[count] = shift1[encrypted[count]]
-        count +=1
-        shift_num = :two
-      elsif shift_num == :two
-        encrypted[count] = shift2[encrypted[count]]
-        count +=1
-        shift_num = :three
-      elsif shift_num == :three
-        encrypted[count] = shift3[encrypted[count]]
-        count +=1
-        shift_num = :four
+      if @base_characters.any? {|char| char == encrypted[count]} == true
+        if shift_num.first == :one
+          encrypted[count] = shift1[encrypted[count]]
+          count +=1
+          shift_num = shift_num.rotate(1)
+        elsif shift_num.first == :two
+          encrypted[count] = shift2[encrypted[count]]
+          count +=1
+          shift_num = shift_num.rotate(1)
+        elsif shift_num.first == :three
+          encrypted[count] = shift3[encrypted[count]]
+          count +=1
+          shift_num = shift_num.rotate(1)
+        else
+          encrypted[count] = shift4[encrypted[count]]
+          count +=1
+          shift_num = shift_num.rotate(1)
+        end
       else
-        encrypted[count] = shift4[encrypted[count]]
         count +=1
-        shift_num = :one
+        shift_num = shift_num.rotate(1)
       end
     end
     text = ""

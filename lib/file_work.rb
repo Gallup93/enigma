@@ -3,7 +3,8 @@ class FileWork
     file = File.open(file_path)
     file.rewind
     text = file.read
-    text = text.gsub(/[^0-9a-z ]/i, '')
+    text = text.delete("\n")
+    # text = text.gsub(/[^0-9a-z ]/i, '')
     text = text.downcase
   end
 
