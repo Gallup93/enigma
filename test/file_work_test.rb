@@ -1,8 +1,4 @@
-require 'simplecov'
-SimpleCov.start
-require 'minitest/autorun'
-require 'minitest/pride'
-require './lib/file_work'
+require './test/test_helper'
 
 class FileWorkTest < Minitest::Test
   def setup

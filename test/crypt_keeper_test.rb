@@ -1,8 +1,4 @@
-require 'simplecov'
-SimpleCov.start
-require 'minitest/autorun'
-require 'minitest/pride'
-require './lib/crypt_keeper.rb'
+require './test/test_helper'
 
 class CryptKeeperTest < Minitest::Test
   def setup

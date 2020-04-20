@@ -1,9 +1,4 @@
-require 'simplecov'
-SimpleCov.start
-require 'minitest/autorun'
-require 'minitest/pride'
-require './lib/enigma.rb'
-require './lib/crypt_keeper'
+require './test/test_helper'
 
 class EnigmaTest < Minitest::Test
   def setup
