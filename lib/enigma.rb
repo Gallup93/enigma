@@ -10,7 +10,7 @@ class Enigma
     @crypt.encryption(text, key, date)
   end
 
-  def decrypt(test, key, date=nil)
-    @crypt.decryption(test, key, date)
+  def decrypt(text, key, date=nil)
+    @crypt.decryption(text, key, date)
   end
 end
