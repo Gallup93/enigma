@@ -55,4 +55,9 @@ class CryptKeeperTest < Minitest::Test
     expected = {encryption: "keder ohulw", key: "02715", date: "040895"}
     assert_equal expected, @crypt.encryption("hello world", "02715", "040895")
   end
+
+  def test_decryption
+    expected = {decryption: "hello world", key: "02715", date: "040895"}
+    assert_equal expected, @crypt.decryption("keder ohulw", "02715", "040895")
+  end
 end
